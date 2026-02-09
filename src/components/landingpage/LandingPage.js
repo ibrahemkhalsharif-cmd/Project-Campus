@@ -1,4 +1,5 @@
 import styles from './LandingPage.module.css';
+import ThemeToggle from '../pagelayout/themeToggle'
 import { useState, useEffect } from 'react';
 const slides = [
     {
@@ -34,11 +35,7 @@ export default function LandingPage() {
             <div className={styles.headerSection}>
                 <div className={styles.leftHeader}>
                     <p className={styles.headerText}>See colleges</p>
-                    <button className={`${styles.toggle} ${theme == "dark" ? styles.toggleDark : styles.toggleLight}`} onClick={toggleTheme}>
-                        <span className={styles.toggleCircle}>
-                            {theme == "dark" ? "🌙" : "☀️"}
-                        </span>
-                    </button>
+                    <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
 
                 </div>
                 <div className={styles.headerRight}>
@@ -62,8 +59,8 @@ export default function LandingPage() {
             </div>
             <div className={styles.bottomSection}>
                 <div className={styles.bottomContent}>
-                    <button className={styles.signUpButton}>Sign-up</button>
-                    <button className={styles.loginButton}>Log-in</button>
+                    <button className={styles.signUpButton}>Get Started</button>
+                    
 
                 </div>
             </div>
