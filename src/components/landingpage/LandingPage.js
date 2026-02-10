@@ -1,27 +1,72 @@
 import styles from './LandingPage.module.css';
 import ThemeToggle from '../pagelayout/themeToggle'
 import { useState, useEffect } from 'react';
-const slides = [
-    {
-        description: "The platform is super clean and intutive, i feel at home!",
+
+const TEXT = {
+    en: {
+        seeColleges: "See colleges",
+        qAndA: "Q&A",
+        about: "About",
+        contactUs: "Contact us",
+        project: "PROJECT",
+        campus: "CAMPUS",
+        getStarted: "Get Started",
+        slides: [
+            {
+                description: "The platform is super clean and intutive, i feel at home!",
+            },
+            {
+                description: "I love connecting with students from other universties here."
+            },
+            {
+                description: " I can see all my university info in one place, it's so easy! "
+            },
+            {
+                description: "Finding professors and contatcing them has never been simpler."
+            }
+        ]
+
     },
-    {
-        description: "I love connecting with students from other universties here."
-    },
-    {
-        description: " I can see all my university info in one place, it's so easy! "
-    },
-    {
-        description: "Finding professors and contatcing them has never been simpler."
+    ar: {
+        seeColleges: "شاهد الكليات",
+        qAndA: "سؤال وجواب",
+        about: "عن",
+        contactUs: "اتصل بنا",
+        project: "المشروع",
+        campus: "الحرم الجامعي",
+        getStarted: "ابدأ الآن",
+        slides: [
+            {
+                description: "المنصة نظيفة جداً ومريحة، أشعر بالراحة!",
+            },
+            {
+                description: "أحب التفاعل مع الطلاب من جامعات أخرى هنا."
+            },
+            {
+                description: "يمكنني رؤية جميع معلومات جامعيتي في مكان واحد، سهل جداً!"
+            },
+            {
+                description: "البحث عن الأساتذة والتواصل معهم لم يكن أسهل من الآن."
+            }
+        ]
     }
-]
+}
+
 export default function LandingPage() {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [theme , setTheme] = useState('dark');
-    const toggleTheme = () =>{
+    const [theme, setTheme] = useState('dark');
+    const [open, setOpen] = useState(false);
+    const [language, setLanguage] = useState('en');
+    const text = TEXT[language];
+    const slides = text.slides;
+
+    useEffect(() => {
+        document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+    })
+    const toggleTheme = () => {
         setTheme((prevTheme) => (prevTheme == 'dark' ? 'light' : 'dark'));
     }
-    
+
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
@@ -34,34 +79,35 @@ export default function LandingPage() {
         <div className={theme == "dark" ? styles.darkContainer : styles.lightContainer}>
             <div className={styles.headerSection}>
                 <div className={styles.leftHeader}>
-                    <p className={styles.headerText}>See colleges</p>
+                    <p className={styles.headerText}>{text.seeColleges}</p>
                     <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+                    <div className={styles.langWrapper}>
+                        <button className={styles.langButton} onClick={() => setOpen((o) => !o)}>{language == 'en' ? "English" : "العربية"} <span className={styles.caret}>▾</span></button>
+                        {open && (
+                            <div className={styles.langDropdown}>
+                                <button onClick={() => { setLanguage('en'); setOpen(false) }}>English</button>
+                                <button onClick={() => { setLanguage('ar'); setOpen(false) }}>العربية</button>
+                            </div>
+                        )}
+                    </div>
 
                 </div>
                 <div className={styles.headerRight}>
-                    <button>Q&A</button>
-                    <button>About</button>
-                    <button className={styles.contactUs}>Contact us</button>
+                    <button>{text.qAndA}</button>
+                    <button>{text.about}</button>
+                    <button className={styles.contactUs}>{text.contactUs}</button>
                 </div>
-
             </div>
             <div className={styles.bodySection}>
                 <div className={styles.firstHalf}>
-                    <p className={styles.bodyFirstTitle}>PROJECT</p>
-                    <p className={styles.bodySecondTitle}>CAMPUS</p>
+                    <p className={styles.bodyFirstTitle}>{text.project}</p>
+                    <p className={styles.bodySecondTitle}>{text.campus}</p>
                     <p key={currentIndex} className={`${styles.bodyDescription} ${styles.fade}`}>{currentSlide.description}</p>
-
-
                 </div>
-
-
-
             </div>
             <div className={styles.bottomSection}>
                 <div className={styles.bottomContent}>
-                    <button className={styles.signUpButton}>Get Started</button>
-                    
-
+                    <button className={styles.signUpButton}>{text.getStarted}</button>
                 </div>
             </div>
 
