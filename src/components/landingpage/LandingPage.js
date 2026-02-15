@@ -1,5 +1,6 @@
 import styles from './LandingPage.module.css';
 import ThemeToggle from '../pagelayout/themeToggle'
+import LanguageDropDown from '../pagelayout/languageDrop';
 import { useState, useEffect } from 'react';
 
 const TEXT = {
@@ -81,15 +82,8 @@ export default function LandingPage() {
                 <div className={styles.leftHeader}>
                     <p className={styles.headerText}>{text.seeColleges}</p>
                     <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-                    <div className={styles.langWrapper}>
-                        <button className={styles.langButton} onClick={() => setOpen((o) => !o)}>{language == 'en' ? "English" : "العربية"} <span className={styles.caret}>▾</span></button>
-                        {open && (
-                            <div className={styles.langDropdown}>
-                                <button onClick={() => { setLanguage('en'); setOpen(false) }}>English</button>
-                                <button onClick={() => { setLanguage('ar'); setOpen(false) }}>العربية</button>
-                            </div>
-                        )}
-                    </div>
+                    <LanguageDropDown language={language} onChange={setLanguage} />
+                   
 
                 </div>
                 <div className={styles.headerRight}>
