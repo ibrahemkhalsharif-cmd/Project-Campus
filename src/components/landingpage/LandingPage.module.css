@@ -40,6 +40,8 @@
 
 .headerText {
     font-size: clamp(1.5rem, 2rem, 3rem);
+    
+    
     color: var(--text-accent);
 }
 
@@ -68,7 +70,7 @@
 .headerRight button:nth-child(3) {
     padding: 12px 32px;
     background: #ffffff;
-    color: #7a2fd6;
+    color: #662d91;
     border-radius: 999px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
@@ -96,12 +98,11 @@
 }
 
 .bodySecondTitle {
-    font-size: clamp(2.4rem, 12vw, 5rem);
+    font-size: clamp(3rem, 15vw, 6.8rem);
     font-weight: 800;
     letter-spacing: 4px;
     margin: 8px 0 0 0;
-
-    background: linear-gradient(90deg, #c72cff, #8b2dff);
+    background: linear-gradient(30deg, #c72cff, #8b2dff);
     -webkit-background-clip: text;
     color: transparent;
 }
@@ -117,6 +118,7 @@
     font-size: clamp(1.5rem, 2rem, 3rem);
     color: var(--subtitle-text);
     font-style: italic;
+    
 }
 
 /* Transitions when switching between themes */
@@ -170,35 +172,34 @@
     gap: 25px;
 }
 
-.signUpButton {
+.getStarted {
     padding: 18px 40px;
     width: clamp(15rem, 16rem, 20rem);
     font-family: "Aktiv Grotesk", sans-serif;
     font-size: 1.75rem;
     background: #ffffff;
-    color: #7a2fd6;
+    color: #662d91;
     border: none;
     border-radius: 999px;
     cursor: pointer;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
+.copyright{
+    margin-bottom: 1%;
+    font-size: 0.8rem;
+    width: 20%;
+    color: var(--subtitle-text);
+    display: flex;
+    align-items: flex-end;
 
-.loginButton {
-    font-family: "Aktiv Grotesk", sans-serif;
-    background: transparent;
-    border: none;
-    height: 50px;
-    border-bottom: 2px solid white;
-    font-size: 1.75rem;
-    color: white;
-    cursor: pointer;
 }
+
+
 
 /*Making the page responsive for phones*/
 @media (max-width: 768px) {
   
     
-
     .darkContainer,
     .lightContainer {
         padding: 16px 24px 0;
@@ -232,7 +233,7 @@
         gap: 16px;
     }
 
-    .signUpButton {
+    .getStarted {
         width: 100%;
         text-align: center;
     }

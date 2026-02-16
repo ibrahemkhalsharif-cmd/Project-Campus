@@ -2,6 +2,8 @@ import styles from './LandingPage.module.css';
 import ThemeToggle from '../pagelayout/themeToggle'
 import LanguageDropDown from '../pagelayout/languageDrop';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 const TEXT = {
     en: {
@@ -14,16 +16,16 @@ const TEXT = {
         getStarted: "Get Started",
         slides: [
             {
-                description: "The platform is super clean and intutive, i feel at home!",
+                description: "“The platform is super clean and intuitive, I feel at home!”",
             },
             {
-                description: "I love connecting with students from other universties here."
+                description: "I love connecting with students from other universties here.”"
             },
             {
-                description: " I can see all my university info in one place, it's so easy! "
+                description: "I can see all my university info in one place, it's so easy! ”"
             },
             {
-                description: "Finding professors and contatcing them has never been simpler."
+                description: "Finding professors and contatcing them has never been simpler.”"
             }
         ]
 
@@ -56,10 +58,10 @@ const TEXT = {
 export default function LandingPage() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [theme, setTheme] = useState('dark');
-    const [open, setOpen] = useState(false);
     const [language, setLanguage] = useState('en');
     const text = TEXT[language];
     const slides = text.slides;
+    const navigate = useNavigate();
 
     useEffect(() => {
         document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
@@ -81,8 +83,8 @@ export default function LandingPage() {
             <div className={styles.headerSection}>
                 <div className={styles.leftHeader}>
                     <p className={styles.headerText}>{text.seeColleges}</p>
-                    <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
                     <LanguageDropDown language={language} onChange={setLanguage} />
+                    <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
                    
 
                 </div>
@@ -101,9 +103,12 @@ export default function LandingPage() {
             </div>
             <div className={styles.bottomSection}>
                 <div className={styles.bottomContent}>
-                    <button className={styles.signUpButton}>{text.getStarted}</button>
+                    <button className={styles.getStarted} onClick={() => navigate('/signup')}>{text.getStarted}</button>
                 </div>
+                 <span className={styles.copyright}>Campus, Inc @ 2026. All rights reserved.</span>
+                
             </div>
+           
 
         </div>
     )
