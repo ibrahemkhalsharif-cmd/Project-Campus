@@ -23,7 +23,7 @@
 .header {
     display: flex;
     width: 50%;
-    margin-left: 4rem;
+    margin-inline-start: 4rem;
     gap: 35px;
     height: 200px;
     flex-direction: row;
@@ -50,8 +50,12 @@
     position: relative;
     z-index: 2;
     flex: 1;
-
     justify-content: flex-end;
+}
+
+:root[dir="rtl"] .content {
+    justify-content: flex-start;
+
 }
 
 .form {
@@ -65,12 +69,14 @@
     height: 550px;
 }
 
+
 .outterContainer {
     position: relative;
     border-radius: 35px;
     height: 500px;
     width: 430px;
-    margin-right: 4%;
+    margin-inline-start: 4%;
+    margin-inline-end: 4%;
     background: linear-gradient(-90deg, rgba(166, 39, 156, 0.95), rgba(49, 32, 169, 0.95));
     padding: 20px 0 0 0;
 }
@@ -83,13 +89,17 @@
 .titleOne {
     font-size: 1.2rem;
     color: rgba(0, 0, 0, 0.90);
-    margin: 40px 0 0 40px;
+    margin: 40px 0 0 0;
+    margin-inline-start: 40px;
+    direction: ltr;
+    text-align: left;
+    unicode-bidi: isolate;
 
 }
 
-
 .titleTwo {
-    margin: 6px 0 0 40px;
+    margin: 6px 0 0 0;
+    margin-inline-start: 40px;
     font-size: clamp(2rem, 7vw, 3rem);
     font-weight: 800;
     letter-spacing: 4px;
@@ -98,27 +108,36 @@
     background-clip: text;
     color: transparent;
 
+    direction: ltr;
+   
+    text-align: left;
+
+    unicode-bidi: isolate;
 }
 
 .helpTextOne {
     margin: 0 40px;
     font-size: 0.9rem;
-    margin-left: 40%;
+
+
     font-style: italic;
     color: rgba(0, 0, 0, 0.45);
 }
-.helpTextTwo{
+
+.helpTextTwo {
     margin: 0 40px;
     font-size: 0.9rem;
     margin-left: auto;
     font-style: italic;
     color: rgba(0, 0, 0, 0.45);
 }
-button{
+
+button {
     font-weight: bold;
 }
 
-.helpTextOne a, .helpTextTwo a {
+.helpTextOne a,
+.helpTextTwo a {
     color: rgba(0, 0, 0, 0.45);
 
 }
@@ -169,7 +188,7 @@ button{
     border-radius: 35px;
     margin: 10% auto 0 auto;
     border: none;
-    background: linear-gradient(-60deg,  rgba(166, 39, 156, 0.85), rgba(49, 32, 169, 0.85));
+    background: linear-gradient(-60deg, rgba(166, 39, 156, 0.85), rgba(49, 32, 169, 0.85));
     color: white;
     font-size: 1.5rem;
     cursor: pointer;
@@ -186,17 +205,37 @@ button{
     font-size: 0.9rem;
     color: rgba(0, 0, 0, 0.45);
 }
- 
-    
-    
+
+
+
 
 .rememberMe {
     display: flex;
     width: 100%;
+    width: calc(100% - 60px);
+    box-sizing: border-box;
     align-items: center;
+    justify-content: space-between;
     margin: 0 40px;
 
 }
+
+.rememberLeft {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+:root[dir="rtl"] .rememberMe {
+
+    flex-direction: row-reverse;
+    transform: translateX(20px);
+}
+
+
+
+
+
 
 .footer {
     position: absolute;

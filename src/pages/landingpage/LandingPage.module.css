@@ -95,6 +95,7 @@
     font-size: clamp(2rem, 3rem, 5rem);
     color: var(--text-accent);
     margin-bottom: 0;
+    
 }
 
 .bodySecondTitle {
